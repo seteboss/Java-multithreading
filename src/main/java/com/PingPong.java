@@ -1,5 +1,7 @@
 package com;
 
+import static com.utils.ThreadUtils.*;
+
 public class PingPong {
 
     public PingPong(String lastMessage) {
@@ -15,7 +17,7 @@ public class PingPong {
             } else {
                 System.out.println(message);
                 lastMessage = message;
-                sleep();
+                sleep(1000);
                 notifyAll();
             }
             if (Thread.interrupted()) {
@@ -24,13 +26,7 @@ public class PingPong {
         }
     }
 
-    private void sleep() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     private void wait(Object o) {
         try {
